@@ -1,0 +1,110 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.site-header h1 {
+  margin: 0 0 20px;
+}
+
+.site-content {
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.person-card {
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.person-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.person-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.person-card h2 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.person-card .subtitle {
+  font-size: 14px;
+  color: var(--text);
+  margin: 5px 0;
+}
+
+.person-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.person-image {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px auto;
+}
+
+.person-detail h1 {
+  margin: 20px 0 10px;
+}
+
+.person-detail .subtitle {
+  font-size: 16px;
+  color: var(--text);
+  margin: 5px 0;
+}
+
+.person-body {
+  margin-top: 30px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+}
+
+.error {
+  color: #dc2626;
+}
