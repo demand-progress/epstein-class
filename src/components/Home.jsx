@@ -35,13 +35,17 @@ function Home() {
   return (
     <div className="container">
       <header className="site-header">
-        <h1 dangerouslySetInnerHTML={{ __html: data.title.rendered }} />
+        <div className="header-text">
+          <h1 dangerouslySetInnerHTML={{ __html: data.title.rendered }} />
+          <div
+            className="site-content"
+            dangerouslySetInnerHTML={{ __html: data.content.rendered }}
+          />
+        </div>
+        <div className="header-collage"></div>
       </header>
 
-      <div
-        className="site-content"
-        dangerouslySetInnerHTML={{ __html: data.content.rendered }}
-      />
+      <h2 className="section-heading">Their actions are irredeemable:</h2>
 
       <div className="people-grid">
         {data.acf.bros.map((person, index) => (
@@ -50,17 +54,23 @@ function Home() {
             to={`/${createSlug(person.name)}`}
             className="person-card"
           >
-            {person.image && (
-              <img
-                src={person.image.url}
-                alt={person.name}
-                width={person.image.width}
-                height={person.image.height}
-              />
-            )}
-            <h2>{person.name}</h2>
-            {person.sub_1 && <p className="subtitle">{person.sub_1}</p>}
-            {person.sub_2 && <p className="subtitle">{person.sub_2}</p>}
+            <div className="folder-bg">
+              <h2>{person.name}</h2>
+              <div className="person-content">
+                {person.image && (
+                  <img
+                    src={person.image.url}
+                    alt={person.name}
+                    width={person.image.width}
+                    height={person.image.height}
+                  />
+                )}
+                <div className="person-info">
+                  {person.sub_1 && <p className="subtitle">{person.sub_1}</p>}
+                  {person.sub_2 && <p className="subtitle">{person.sub_2}</p>}
+                </div>
+              </div>
+            </div>
           </Link>
         ))}
       </div>
