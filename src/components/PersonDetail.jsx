@@ -6,6 +6,7 @@ const API_URL = 'https://api.demandprogress.org/wp-json/wp/v2/pages/1390'
 function PersonDetail() {
   const { slug } = useParams()
   const [person, setPerson] = useState(null)
+  const [pageData, setPageData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -16,6 +17,7 @@ function PersonDetail() {
         return response.json()
       })
       .then(data => {
+        setPageData(data)
         const createSlug = (name) => name.toLowerCase().replace(/\s+/g, '-')
         const foundPerson = data.acf.bros.find(
           p => createSlug(p.name) === slug
@@ -35,33 +37,47 @@ function PersonDetail() {
 
   if (loading) return <div className="loading">Loading...</div>
   if (error) return <div className="error">Error: {error}</div>
-  if (!person) return null
+  if (!person || !pageData) return null
 
   return (
     <div className="container">
-      <Link to="/" className="back-link">← Back to list</Link>
+      <Link to="/" className="detail-header-link">
+        <header className="site-header detail-header">
+          <div className="header-text">
+            <h1 dangerouslySetInnerHTML={{ __html: pageData.title.rendered }} />
+            <div
+              className="site-content"
+              dangerouslySetInnerHTML={{ __html: pageData.content.rendered }}
+            />
+          </div>
+        </header>
+      </Link>
 
       <div className="person-detail">
-        {person.image && (
-          <img
-            src={person.image.url}
-            alt={person.name}
-            width={person.image.width}
-            height={person.image.height}
-            className="person-image"
-          />
-        )}
+        <div className="folder-open-top">
+          <h2 className="person-detail-name">{person.name}</h2>
+        </div>
+        <div className="folder-open-middle">
+          {person.image && (
+            <img
+              src={person.image.url}
+              alt={person.name}
+              width={person.image.width}
+              height={person.image.height}
+              className="person-image"
+            />
+          )}
 
-        <h1>{person.name}</h1>
-        {person.sub_1 && <p className="subtitle">{person.sub_1}</p>}
-        {person.sub_2 && <p className="subtitle">{person.sub_2}</p>}
-
-        {person.body && (
-          <div
-            className="person-body"
-            dangerouslySetInnerHTML={{ __html: person.body }}
-          />
-        )}
+          {person.body && (
+            <div
+              className="person-body"
+              dangerouslySetInnerHTML={{ __html: person.body }}
+            />
+          )}
+        </div>
+        <div className="folder-open-bottom">
+          <Link to="/" className="back-link">← Back</Link>
+        </div>
       </div>
     </div>
   )

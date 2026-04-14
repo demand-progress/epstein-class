@@ -106,45 +106,111 @@
   line-height: 1.2;
 }
 
+.detail-header-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.detail-header-link:hover {
+  text-decoration: none;
+}
+
+.detail-header {
+  margin-bottom: 20px;
+}
+
+.detail-header .header-text {
+  margin-bottom: 0;
+}
+
 .person-detail {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.folder-open-top {
+  background-image: url('/src/assets/openfolder-top.png');
+  background-size: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 72px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.folder-open-middle {
+  background-image: url('/src/assets/openfolder-middle.png');
+  background-size: 890px auto;
+  background-position: top;
+  background-repeat: repeat-y;
+  padding: 0 60px 40px;
+  min-height: 200px;
+  position: relative;
+  z-index: 2;
+
+}
+
+.folder-open-bottom {
+  background-image: url('/src/assets/openfolder-bottom.png');
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 100%;
+  margin-top: -56px;
+  position: relative;
+  z-index: 1;
+}
+
+.person-detail-name {
+  font-family: var(--mono);
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--black);
+  position: absolute;
+  top: 12px;
+  left: 50px;
 }
 
 .person-image {
   max-width: 400px;
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 20px auto;
-}
-
-.person-detail h1 {
-  margin: 20px 0 10px;
+  margin: 20px 0;
+  transform: rotate(-2deg);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .person-detail .subtitle {
   font-size: 16px;
-  color: var(--text);
+  color: var(--folder-dark);
   margin: 5px 0;
+  line-height: 1.3;
 }
 
 .person-body {
   margin-top: 30px;
   text-align: left;
   line-height: 1.6;
+  color: var(--black);
 }
 
-.back-link {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: var(--accent);
+.folder-open-bottom .back-link {
+  position: absolute;
+  bottom: 10px;
+  right: 60px;
+  font-family: var(--mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
   text-decoration: none;
-  font-weight: 500;
 }
 
-.back-link:hover {
+.folder-open-bottom .back-link:hover {
   text-decoration: underline;
 }
 
