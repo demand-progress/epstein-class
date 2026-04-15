@@ -12,8 +12,25 @@ function ImageStackCarousel({ images }) {
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
   const [isAnimating, setIsAnimating] = useState(false)
   const [swipeDirection, setSwipeDirection] = useState(null)
+  const [scale, setScale] = useState(1.1)
 
   const containerRef = useRef(null)
+
+  // Update scale based on window width
+  useEffect(() => {
+    const updateScale = () => {
+      const width = window.innerWidth
+      if (width <= 500) {
+        setScale(1.8)
+      } else {
+        setScale(1.1)
+      }
+    }
+
+    updateScale()
+    window.addEventListener('resize', updateScale)
+    return () => window.removeEventListener('resize', updateScale)
+  }, [])
 
   // Handle pointer down
   const handlePointerDown = (e) => {
@@ -124,8 +141,8 @@ function ImageStackCarousel({ images }) {
     )
   }
 
-  // Render only top 3 visible cards for performance
-  const visibleCards = [0, 1, 2].map(offset => {
+  // Render only top 5 visible cards for performance
+  const visibleCards = [0, 1, 2, 3, 4].map(offset => {
     const index = (currentIndex + offset) % images.length
     return { index, offset }
   })
@@ -144,21 +161,24 @@ function ImageStackCarousel({ images }) {
         {visibleCards.map(({ index, offset }) => {
           const image = images[index].image
           const rotation = rotations[index]
-          const zIndex = 3 - offset
+          const zIndex = 5 - offset
 
           // Calculate transform
-          let transform = `rotate(${rotation}deg)`
+          // Start with centering transform and scale
+          let transform = `translate(-50%, -50%) scale(${scale})`
 
           // Top card gets drag offset
           if (offset === 0 && (isDragging || swipeDirection)) {
             const dragX = isDragging ? dragOffset.x : 0
             const dragRotation = isDragging ? dragOffset.x * 0.05 : 0
-            transform = `translate(${dragX}px, 0) rotate(${rotation + dragRotation}deg)`
+            transform = `translate(calc(-50% + ${dragX}px), -50%) scale(${scale}) rotate(${rotation + dragRotation}deg)`
+          } else {
+            transform += ` rotate(${rotation}deg)`
           }
 
           // Apply offset for stacked effect (cards behind are slightly offset)
           if (offset > 0) {
-            transform += ` translateY(${offset * -3}px)`
+            transform += ` translateY(${offset * -5}px)`
           }
 
           const isExiting = offset === 0 && swipeDirection
