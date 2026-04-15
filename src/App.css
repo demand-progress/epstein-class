@@ -224,3 +224,77 @@
 .error {
   color: #dc2626;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+
+  .header-text {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .site-header h1 {
+    text-align: center;
+    width: 100%;
+  }
+
+  .site-content {
+    font-size: 18px;
+  }
+
+  .header-collage {
+    height: 60vw;
+    background-size: cover;
+  }
+
+  .section-heading {
+    font-size: 24px;
+    margin: 20px 0 10px;
+    text-align: center;
+  }
+
+  .people-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .person-card h2 {
+    font-size: 24px;
+  }
+
+  .person-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .person-card .subtitle {
+    font-size: 18px;
+  }
+
+  .person-detail {
+    margin: 20px auto;
+  }
+
+  .folder-open-middle {
+    padding: 0 30px 30px;
+  }
+
+  .person-detail-name {
+    font-size: 22px;
+    left: 15px;
+    top: 20px;
+  }
+
+  .person-image {
+    max-width: 100%;
+  }
+
+  .folder-open-bottom .back-link {
+    right: 30px;
+    font-size: 16px;
+  }
+}
