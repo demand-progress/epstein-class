@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import ImageStackCarousel from './ImageStackCarousel'
 
 const API_URL = 'https://api.demandprogress.org/wp-json/wp/v2/pages/1390'
 
@@ -58,7 +59,9 @@ function PersonDetail() {
           <h2 className="person-detail-name">{person.name}</h2>
         </div>
         <div className="folder-open-middle">
-          {person.image && (
+          {person.detail_images && person.detail_images.length > 0 ? (
+            <ImageStackCarousel images={person.detail_images} />
+          ) : person.image ? (
             <img
               src={person.image.url}
               alt={person.name}
@@ -66,7 +69,7 @@ function PersonDetail() {
               height={person.image.height}
               className="person-image"
             />
-          )}
+          ) : null}
 
           {person.body && (
             <div

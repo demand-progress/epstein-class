@@ -225,6 +225,91 @@
   color: #dc2626;
 }
 
+/* Image Stack Carousel */
+.image-stack-carousel {
+  margin: 0px 0;
+}
+
+.image-stack {
+  position: relative;
+  height: 400px;
+  cursor: grab;
+  user-select: none;
+}
+
+.image-stack:active {
+  cursor: grabbing;
+}
+
+.carousel-image-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  margin-left: -200px; /* Half of max-width to center */
+  margin-top: -200px; /* Center vertically */
+}
+
+.carousel-image-wrapper.exiting-right {
+  animation: swipeExitRight 0.3s ease-out forwards;
+}
+
+.carousel-image-wrapper.exiting-left {
+  animation: swipeExitLeft 0.3s ease-out forwards;
+}
+
+.carousel-image-wrapper img {
+  pointer-events: none;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 15px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.carousel-dot:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-dot.active {
+  background: var(--folder-dark);
+}
+
+@keyframes swipeExitRight {
+  to {
+    transform: translateX(600px) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes swipeExitLeft {
+  to {
+    transform: translateX(-600px) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-image-wrapper {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .container {
@@ -278,9 +363,13 @@
   .person-detail {
     margin: 20px auto;
   }
+  .folder-open-top{
+    height: 50px;
+  }
 
   .folder-open-middle {
-    padding: 0 30px 30px;
+    padding: 20px 20px 30px;
+    margin: 0px 2px;
   }
 
   .person-detail-name {
@@ -296,5 +385,19 @@
   .folder-open-bottom .back-link {
     right: 30px;
     font-size: 16px;
+  }
+
+  .image-stack {
+    height: 300px;
+  }
+
+  .carousel-image-wrapper {
+    margin-left: -150px; /* Adjust for smaller screens */
+    margin-top: -150px; /* Center vertically on mobile */
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
   }
 }
