@@ -66,8 +66,8 @@ function Home() {
                   />
                 )}
                 <div className="person-info">
-                  {person.sub_1 && <p className="subtitle">{person.sub_1}</p>}
-                  {person.sub_2 && <p className="subtitle">{person.sub_2}</p>}
+                  {person.sub_1 && <p className="subtitle">• {person.sub_1}</p>}
+                  {person.sub_2 && <p className="subtitle">• {person.sub_2}</p>}
                 </div>
               </div>
             </div>
