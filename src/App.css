@@ -137,10 +137,15 @@
   background-size: 100%;
   background-position: top;
   background-repeat: no-repeat;
-  height: 72px;
+  /* height: 700px; */
+  aspect-ratio: 1.28;
   width: 100%;
   position: relative;
   z-index: 3;
+  overflow: hidden;
+}
+.person-detail-image-wrap{
+  padding-top: 65px;
 }
 
 .folder-open-middle {
@@ -148,7 +153,7 @@
   background-size: 890px auto;
   background-position: top;
   background-repeat: repeat-y;
-  padding: 50px 60px 40px;
+  padding: 1px 60px 40px;
   min-height: 200px;
   position: relative;
   z-index: 2;
@@ -231,7 +236,7 @@
 
 /* Image Stack Carousel */
 .image-stack-carousel {
-  margin: 0px 0;
+  margin: 80px 0 0;
 }
 
 .image-stack {
@@ -319,16 +324,28 @@
     animation: none !important;
   }
 }
-
+/* ipad */
 @media (max-width: 900px) {
+  .folder-open-middle{
+    margin: 0 3px;
+  }
   .people-grid{
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
+  .person-detail-name {
+    font-size: 21px;
+    left: 23px;
+    top: 10px;
+  }
 }
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-  .container {
+  .container{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .container.home {
     padding: 20px 0px;
   }
 
@@ -387,12 +404,18 @@
     margin: 20px auto;
   }
   .folder-open-top{
-    height: 50px;
+    aspect-ratio: unset;
+    height: 350px;
+    overflow: visible;
+  }
+  .image-stack-carousel{
+    margin: 20px 20px 0;
   }
 
   .folder-open-middle {
     /* padding: 20px 20px 30px; */
     margin: 0px 2px;
+    padding: 75px 20px 30px;
   }
 
   .person-detail-name {
@@ -402,7 +425,7 @@
   }
 
   .person-image {
-    max-width: 100%;
+    max-width: 60vw;
   }
 
   .folder-open-bottom .back-link {
@@ -421,6 +444,6 @@
 }
 @media (max-width: 500px) {
   .folder-open-middle {
-    padding: 20px 20px 30px;
+    /* padding: 20px 20px 30px; */
   }
 }

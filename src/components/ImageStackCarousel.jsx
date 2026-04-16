@@ -23,7 +23,7 @@ function ImageStackCarousel({ images }) {
       if (width <= 500) {
         setScale(1.8)
       } else {
-        setScale(1.1)
+        setScale(1.2)
       }
     }
 

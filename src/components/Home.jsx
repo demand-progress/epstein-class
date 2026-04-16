@@ -33,7 +33,7 @@ function Home() {
   }
 
   return (
-    <div className="container">
+    <div className="container home">
       <header className="site-header">
         <div className="header-text">
           <h1 dangerouslySetInnerHTML={{ __html: data.title.rendered }} />

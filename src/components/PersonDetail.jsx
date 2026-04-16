@@ -41,7 +41,7 @@ function PersonDetail() {
   if (!person || !pageData) return null
 
   return (
-    <div className="container">
+    <div className="container detail">
       <Link to="/" className="detail-header-link">
         <header className="site-header detail-header">
           <div className="header-text">
@@ -57,19 +57,21 @@ function PersonDetail() {
       <div className="person-detail">
         <div className="folder-open-top">
           <h2 className="person-detail-name">{person.name}</h2>
+          <div className='person-detail-image-wrap'>
+            {person.detail_images && person.detail_images.length > 0 ? (
+              <ImageStackCarousel images={person.detail_images} />
+            ) : person.image ? (
+              <img
+                src={person.image.url}
+                alt={person.name}
+                width={person.image.width}
+                height={person.image.height}
+                className="person-image"
+              />
+            ) : null}
+          </div>
         </div>
         <div className="folder-open-middle">
-          {person.detail_images && person.detail_images.length > 0 ? (
-            <ImageStackCarousel images={person.detail_images} />
-          ) : person.image ? (
-            <img
-              src={person.image.url}
-              alt={person.name}
-              width={person.image.width}
-              height={person.image.height}
-              className="person-image"
-            />
-          ) : null}
 
           {person.body && (
             <div
