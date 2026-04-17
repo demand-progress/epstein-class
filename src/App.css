@@ -207,6 +207,12 @@
   color: var(--black);
   font-family: var(--mono);
 }
+.person-body p {
+  margin-bottom: 25px;
+}
+.person-body a {
+  color: var(--folder-dark);
+}
 
 .folder-open-bottom .back-link {
   position: absolute;
