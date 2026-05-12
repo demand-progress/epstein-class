@@ -17,6 +17,9 @@
   border-radius: 8px;
   aspect-ratio: 1.8;
 }
+.main-body{
+  margin-bottom: 30px;
+}
 
 .header-text {
   display: flex;

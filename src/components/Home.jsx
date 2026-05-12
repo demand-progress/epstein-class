@@ -45,6 +45,13 @@ function Home() {
         <div className="header-collage"></div>
       </header>
 
+      {data.acf.main_body && (
+        <div
+          className="main-body"
+          dangerouslySetInnerHTML={{ __html: data.acf.main_body }}
+        />
+      )}
+
       <h2 className="section-heading">Their actions are irredeemable:</h2>
 
       <div className="people-grid">
