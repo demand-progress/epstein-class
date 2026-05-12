@@ -52,8 +52,6 @@ function Home() {
         />
       )}
 
-      <h2 className="section-heading">Their actions are irredeemable:</h2>
-
       <div className="people-grid">
         {data.acf.bros.map((person, index) => (
           <Link
